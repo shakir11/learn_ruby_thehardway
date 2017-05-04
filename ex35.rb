@@ -50,6 +50,46 @@ def bear_room
   end
 end
 
+def cthulhu_room
+  puts "Here is great evil Cthulhu."
+  puts "Do you flee for your life or eat your head?"
+
+  print "> "
+  choice = $stdin.gets.chomp
+
+  if choice.include? "flee"
+    start
+  elsif choice.include? "head"
+    dead("Well that was tasty!!")
+  else
+    cthulhu_room
+  end
+end
+
+def dead(why)
+  puts why, "Good job!"
+  exit(0)
+end
+
+def start
+  puts "You are in a dark room."
+  puts "There is a door to your right and left."
+  puts "Which one do you take?"
+
+  print "> "
+  choice = $stdin.gets.chomp
+  if choice == "left"
+    bear_room
+  elsif choice == "right"
+    cthulhu_room
+  else
+    dead("You stuble around the room until you starve.")
+  end
+end
+
+start
+
+
 # gold_room
 
-bear_room
+# bear_room
